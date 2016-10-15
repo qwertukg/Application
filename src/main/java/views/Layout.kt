@@ -22,19 +22,19 @@ class Layout {
                     div("col-md-10") {
                         h1 {
                             attributes["style"] = "margin-top: 0;"
-                            +PersonalData.name
+                            +Information.name
                         }
 
                         p {
-                            +PersonalData.sex
+                            +Information.sex
                             +", "
-                            +PersonalData.age.toString()
+                            +Information.age.toString()
                             +" years old, date of birth "
-                            +PersonalData.dob.toString()
+                            +Information.dob.toString()
                         }
 
                         p {
-                            for (contact in ContactInfo.items) {
+                            for (contact in Information.contacts) {
                                 div {
                                     infoBlock(contact) { +contact.toString() }
                                 }
@@ -42,7 +42,7 @@ class Layout {
                         }
 
                         p {
-                            for (location in LocationInfo.items) {
+                            for (location in Information.locations) {
                                 div {
                                     infoBlock(location) { +location.toString() }
                                 }

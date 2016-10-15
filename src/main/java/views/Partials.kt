@@ -26,9 +26,7 @@ fun DIV.infoBlock(info: Info, block: DIV.() -> Unit = {}) {
         attributes["aria-hidden"] = "true"
     }
 
-    if (!info.url.isEmpty()) a(info.url) {
-        block()
-    } else block()
+    if (!info.url.isEmpty()) a(info.url) { block() } else block()
 
     if (!info.mark.isEmpty()) span("text-muted") {
         attributes["style"] = "padding-left: 5px;"
@@ -36,7 +34,7 @@ fun DIV.infoBlock(info: Info, block: DIV.() -> Unit = {}) {
     }
 }
 
-fun DIV.subHeaderBlock(block: DIV.() -> Unit) {
+fun DIV.subHeaderBlock(block: DIV.() -> Unit = {}) {
     div("text-uppercase text-muted") {
         attributes["style"] = "margin-top: 20px;"
         block()
