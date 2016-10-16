@@ -3,7 +3,11 @@ package views
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import models.*
-
+import models.Skill
+import models.base.Context
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAmount
 
 
 class Layout {
@@ -17,34 +21,34 @@ class Layout {
                 style = "padding: 50px;"
                 div("row") {
                     div("col-md-2") {
-                        imageBlock(Photo)
+                        imageBlock(Applicant.photo)
                     }
                     div("col-md-10") {
                         h1 {
                             attributes["style"] = "margin-top: 0;"
-                            +Information.name
+                            +Applicant.information.name
                         }
 
                         p {
-                            +Information.sex
+                            +Applicant.information.sex
                             +", "
-                            +Information.age.toString()
+                            +Applicant.information.age.toString()
                             +" years old, date of birth "
-                            +Information.dob.toString()
+                            +Applicant.information.dob.toString()
                         }
 
                         p {
-                            for (contact in Information.contacts) {
+                            Applicant.information.contacts.forEach {
                                 div {
-                                    infoBlock(contact) { +contact.toString() }
+                                    infoBlock(it) { +it.toString() }
                                 }
                             }
                         }
 
                         p {
-                            for (location in Information.locations) {
+                            Applicant.information.locations.forEach {
                                 div {
-                                    infoBlock(location) { +location.toString() }
+                                    infoBlock(it) { +it.toString() }
                                 }
                             }
                         }
@@ -56,21 +60,59 @@ class Layout {
                     div("col-md-12") {
                         h3 {
                             attributes["style"] = "margin-top: 0;"
-                            +DesiredPosition.title
+                            +Applicant.desiredPosition.name
                         }
-                        p { +DesiredPosition.description }
+                        p { +Applicant.desiredPosition.description }
                         p {
-                            for (direction in DesiredPosition.directions) {
+                            Applicant.desiredPosition.directions.forEach {
                                 small {
-                                    infoBlock(direction) { +direction.toString() }
+                                    infoBlock(it) { +it.toString() }
                                     br
                                 }
                             }
                         }
                         p {
-                            for (addition in DesiredPosition.aditionals) {
+                            Applicant.desiredPosition.aditionals.forEach {
                                 div {
-                                    infoBlock(addition) { +addition.toString() }
+                                    infoBlock(it) { +it.toString() }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                val mask = DateTimeFormatter.ofPattern("LLLL yyyy")
+                subHeaderBlock { +"Work experience " }
+                Applicant.workPlaces.forEach {
+                    div("row") {
+                        attributes["style"] = "margin-bottom: 20px;"
+                        div("col-md-2") {
+                            +"${it.period.from.format(mask)} — ${it.period.to.format(mask)}"
+                            br
+                            +"${it.period.to.until(it.period.from).months} months"
+                        }
+
+                        div("col-md-10") {
+                            h3 {
+                                attributes["style"] = "margin-top: 0; margin-bottom: 0;"
+                                +it.company
+                            }
+
+                            p {
+                                span("text-muted") { +it.city }
+                                +" "
+                                infoBlock(it.website) { +it.website.toString() }
+                            }
+
+                            p {
+                                div("text-uppercase") { +it.position }
+                                +it.description
+                            }
+
+                            p {
+                                it.skills.forEach {
+                                    kbd { +it.toString() }
+                                    +" "
                                 }
                             }
                         }
