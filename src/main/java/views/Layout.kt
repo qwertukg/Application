@@ -8,6 +8,7 @@ import models.base.Context
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAmount
+import java.util.*
 
 
 class Layout {
@@ -89,7 +90,7 @@ class Layout {
                         div("col-md-2") {
                             +"${it.period.from.format(mask)} — ${it.period.to.format(mask)}"
                             br
-                            +"${it.period.to.until(it.period.from).months} months"
+                            +"${it.period.from.until(it.period.to).toTotalMonths()} months"
                         }
 
                         div("col-md-10") {
