@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 object Applicant {
 
-    val photo = Photo("https://hh.kz/photo/445402538.jpeg?t=1476550995&h=khIG633y-NgHdIZGKvBybQ", "— It's i am")
+    val photo = Photo("https://avatars0.githubusercontent.com/u/4414230?v=3&s=466", "— It's i am")
 
     val information = Information("Daniil Rakhmatulin", "Male", LocalDate.of(1986, 4, 22), listOf(
             Block("+84 91 574 7722"),
