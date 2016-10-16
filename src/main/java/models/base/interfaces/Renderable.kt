@@ -1,6 +1,6 @@
 package models.base.interfaces
 
-interface Renderable  {
+interface Renderable {
     val value: String
     override fun toString(): String
 }

@@ -1,12 +1,18 @@
 package models.base
 
+import models.Skill
+
 object Context {
-    val skills : MutableMap<String, Int> = mutableMapOf()
+    val skills: MutableList<Skill> = mutableListOf()
+    var order = 1
+    fun setOrIncrease(new: Skill) {
+        skills.filter { it.value == new.value }.forEach { it.count++ }
 
-    fun setOrIncrease(key: String) {
-        val weight = skills[key]
+        if (skills.find {it.value == new.value} == null) {
+            new.order = order++
+            skills.add(new)
+        }
 
-        if (weight is Int) skills[key] = weight + 1
-        else skills[key] = 1
+        skills.forEach { it.weight = it.count / it.order.toFloat() }
     }
 }

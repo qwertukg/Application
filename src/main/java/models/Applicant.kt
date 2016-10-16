@@ -1,7 +1,5 @@
 package models
 
-import models.Block
-import models.Skill
 import java.time.LocalDate
 
 object Applicant {
@@ -29,7 +27,7 @@ object Applicant {
             Block("Web engineer", "", "", "— ")
     ), listOf(
             Block("full", "", "", "Occupation:"),
-            Block("full time", "", "","Work schedule:"),
+            Block("full time", "", "", "Work schedule:"),
             Block("not important", "", "", "Desirable time in road:"),
             Block("Available for business trips")
     ))
@@ -54,7 +52,7 @@ object Applicant {
                     Skill("PostgreSQL"),
                     Skill("MSSQL"),
                     Skill("Rest API"),
-                    Skill("Web Services"),
+                    Skill("Web Service"),
                     Skill("SVN")
             )),
             WorkPlace("iBEC Systems LLP", "Almaty", Block("ibecsystems.com", "http://ibecsystems.com"), "Backend developer", "Development of high load web application for national post operator, stores, portals", Period(2013, 10, 2015, 5), listOf(
@@ -85,12 +83,12 @@ object Applicant {
                     Skill("MySql"),
                     Skill("SVN")
             )),
-            WorkPlace("ZamanPharm Almaty Distribution LLP", "Almaty", Block(), "Web-developer", "Maintenance and support of 1C, Development, implementation and maintenance of web applications", Period(2010, 6, 2013, 1), listOf(
+            WorkPlace("ZamanPharm Almaty Distribution LLP", "Almaty", Block(), "Web developer", "Maintenance and support of 1C, Development, implementation and maintenance of web applications", Period(2010, 6, 2013, 1), listOf(
                     Skill("PHP"),
                     Skill("JavaScript"),
                     Skill("JQuery"),
                     Skill("MySql"),
-                    Skill("MSSql"),
+                    Skill("MSSQL"),
                     Skill("1C")
             )),
             WorkPlace("East-Kazakhstan Regional library of А. S. Pushkin", "Ust-Kamenogorsk", Block(), "ICT adviser of informational communicational technologies", "Development and maintenance of web-sites, control and servers support", Period(2009, 5, 2010, 5), listOf(
@@ -103,14 +101,14 @@ object Applicant {
             WorkPlace("Basis-IT Program-technical complex", "Ust-Kamenogorsk", Block(), "Head of Technical department", "Software development", Period(2008, 8, 2009, 3), listOf(
                     Skill("PHP"),
                     Skill("JavaScript"),
-                    Skill("Visual basic"),
+                    Skill("Visual Basic"),
                     Skill("MySql"),
                     Skill("Apache"),
                     Skill("1C")
 
             )),
             WorkPlace("Novaya Gavan' LLP", "Ust-Kamenogorsk", Block(), "Engraving equipment operator", "passed the training course from Austrian specialists, worked with laser engraving of dyeing patterns", Period(2007, 8, 2008, 8), listOf(
-                    Skill("Best Image")
+                    Skill("BestImage")
             )),
             WorkPlace("Basis-IT Program-technical complex", "Ust-Kamenogorsk", Block(), "3D graphic designer and operator of the coordinate-milling equipment", "Development and issuing of 3D objects, bas-reliefs, carved furniture", Period(2006, 11, 2007, 6), listOf(
                     Skill("ArtCam"),
@@ -118,7 +116,7 @@ object Applicant {
             )),
             WorkPlace("Soft service company", "Ust-Kamenogorsk", Block(), "Specialist of software and hardware", "Get a huge experience in search and elimination of the software and hardware problems of personal PCs, in compatibility and optimization work of PC systems", Period(2005, 7, 2006, 11), listOf(
                     Skill("Pascal"),
-                    Skill("Visual basic")
+                    Skill("Visual Basic")
             )),
             WorkPlace("Image LLP", "Ust-Kamenogorsk", Block(), "Computer graphics designer", "Creation of all advertisements types, from the development till its implementation", Period(2004, 5, 2005, 6), listOf(
                     Skill("Corel Draw"),

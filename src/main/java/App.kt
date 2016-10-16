@@ -1,8 +1,8 @@
-import org.jetbrains.ktor.application.*
-import org.jetbrains.ktor.http.*
-import org.jetbrains.ktor.response.*
-import org.jetbrains.ktor.routing.*
-import org.jetbrains.ktor.jetty.*
+import org.jetbrains.ktor.application.call
+import org.jetbrains.ktor.http.ContentType
+import org.jetbrains.ktor.jetty.embeddedJettyServer
+import org.jetbrains.ktor.response.respondText
+import org.jetbrains.ktor.routing.get
 import views.Layout
 
 fun main(args: Array<String>) {

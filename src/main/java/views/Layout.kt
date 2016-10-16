@@ -2,13 +2,9 @@ package views
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
-import models.*
-import models.Skill
+import models.Applicant
 import models.base.Context
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAmount
-import java.util.*
 
 
 class Layout {
@@ -24,7 +20,7 @@ class Layout {
                     div("col-md-2") {
                         imageBlock(Applicant.photo)
                     }
-                    div("col-md-10") {
+                    div("col-md-8") {
                         h1 {
                             attributes["style"] = "margin-top: 0;"
                             +Applicant.information.name
@@ -88,12 +84,14 @@ class Layout {
                     div("row") {
                         attributes["style"] = "margin-bottom: 20px;"
                         div("col-md-2") {
-                            +"${it.period.from.format(mask)} — ${it.period.to.format(mask)}"
-                            br
-                            +"${it.period.from.until(it.period.to).toTotalMonths()} months"
+                            small("text-muted") {
+                                +"${it.period.from.format(mask)} — ${it.period.to.format(mask)}"
+                                br
+                                +"${it.period.from.until(it.period.to).toTotalMonths()} months"
+                            }
                         }
 
-                        div("col-md-10") {
+                        div("col-md-8") {
                             h3 {
                                 attributes["style"] = "margin-top: 0; margin-bottom: 0;"
                                 +it.company
@@ -112,19 +110,32 @@ class Layout {
 
                             p {
                                 it.skills.forEach {
-                                    kbd { +it.toString() }
-                                    +" "
+                                    kbd("text-uppercase") {
+                                        attributes["style"] = "margin-right: 5px; margin-bottom: 5px; float: left;"
+                                        +it.toString()
+                                    }
                                 }
                             }
                         }
                     }
                 }
 
+                subHeaderBlock { +"Main skills" }
                 div("row") {
                     div("col-md-2") {
 
                     }
-                    div("col-md-10") {
+                    div("col-md-8") {
+                        p {
+                            Context.skills.sortedByDescending { it.weight }.forEach {
+//                              p { +"${it.value} -count- ${it.count} -order- ${it.order} -weight- ${it.weight}" }
+                                kbd("text-uppercase") {
+
+                                    attributes["style"] = "margin: 0 5px 5px 0; float: left;"
+                                    +it.toString()
+                                }
+                            }
+                        }
 
                     }
                 }
